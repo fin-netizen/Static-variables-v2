@@ -1,5 +1,6 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -7,9 +8,15 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
     float xvel, yvel, zvel;
     public Transform respawnPoint;
+    int Hiscore = 100;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (PlayerPrefs.HasKey("Hiscore") == true)
+        {
+            Hiscore = PlayerPrefs.GetInt("Hiscore");
+        }
+
         rb = GetComponent<Rigidbody>();
         playerhealth++;
         LevelManager.instance.Setplayerhealth(3);
@@ -45,6 +52,7 @@ public class PlayerScript : MonoBehaviour
         {
             RespawnPlayer();
             playerhealth = 3;
+            
         }
         
     }
@@ -52,7 +60,6 @@ public class PlayerScript : MonoBehaviour
     {
         transform.position = respawnPoint.position;
         rb.linearVelocity = new Vector2(0, 0);
-
 
     }
     private void OnGUI()
@@ -62,7 +69,7 @@ public class PlayerScript : MonoBehaviour
 
         string text = "Player health: " + Health;
 
-        text += "\nBe careful of enemies";
+        text += "\nBe careful of enemies" + "\nCurrent score:" + Hiscore + "\nCurrentHigh";
 
         // define debug text area
         GUI.contentColor = Color.white;
@@ -70,6 +77,8 @@ public class PlayerScript : MonoBehaviour
         GUILayout.Label($"<size=24>{text}</size>");
         GUILayout.EndArea();
     }
+  
+
     private void OnCollisionEnter(Collision collision)
     {
         print("the players health is now " + playerhealth);

@@ -22,6 +22,7 @@ public class ButtonScript : MonoBehaviour
     public void LoadScene( string name )
     {
         SceneManager.LoadScene(name);
+        FindAnyObjectByType<AudioManager>().Play("PlayerLoad");
     }
 
 }

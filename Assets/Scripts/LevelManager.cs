@@ -4,7 +4,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     private int PlayerHealth;
-
+    int Highscore;
     void Awake()
     {
         if (instance == null)
@@ -19,7 +19,14 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    public void SetHighScore(int score)
+    {
+        Highscore = score;
+    }
+    public int GetHighScore()
+    {
+        return Highscore;
+    }
     //these methods are globally accessible
     public void Setplayerhealth(int health)
     {
@@ -33,6 +40,7 @@ public class LevelManager : MonoBehaviour
     {
         PlayerHealth += amount;
     }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

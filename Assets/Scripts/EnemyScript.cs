@@ -26,6 +26,7 @@ public class EnemyScript : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             LevelManager.instance.HealthModefier(-1);
+            LevelManager.instance.SetHighScore(+100); 
         }
     }
     public EnemyScript()
