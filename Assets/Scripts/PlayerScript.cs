@@ -24,19 +24,19 @@ public class PlayerScript : MonoBehaviour
         zvel = rb.linearVelocity.z;
         if (Input.GetKey("a"))
         {
-            xvel = -4;
+            xvel = -5;
         }
         if (Input.GetKey("d"))
         {
-            xvel = 4;
+            xvel = 5;
         }
         if (Input.GetKey("w"))
         {
-            zvel = 4;
+            zvel = 5;
         }
         if (Input.GetKey("s"))
         {
-            zvel = -4;
+            zvel = -5;
         }
 
        
@@ -51,7 +51,7 @@ public class PlayerScript : MonoBehaviour
     void RespawnPlayer()
     {
         transform.position = respawnPoint.position;
-        rb.linearVelocity = new Vector2(0,0);
+        rb.linearVelocity = new Vector2(0, 0);
 
 
     }
@@ -74,5 +74,5 @@ public class PlayerScript : MonoBehaviour
     {
         print("the players health is now " + playerhealth);
     }
-   
+
 }

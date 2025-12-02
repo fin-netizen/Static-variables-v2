@@ -19,14 +19,6 @@ public class LevelManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public void LoadScene()
-    {
-        SceneManager.LoadScene("Menu");
-    }
-    public void LoadNextScene()
-    {
-        SceneManager.LoadScene("Level1");
-    }
 
     //these methods are globally accessible
     public void Setplayerhealth(int health)
