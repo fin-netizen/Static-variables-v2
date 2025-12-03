@@ -24,5 +24,8 @@ public class ButtonScript : MonoBehaviour
         SceneManager.LoadScene(name);
         FindAnyObjectByType<AudioManager>().Play("PlayerLoad");
     }
-
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }

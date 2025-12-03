@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour
     Rigidbody rb;
     float xvel, yvel, zvel;
     public Transform respawnPoint;
-    int Hiscore = 100;
+    int Highscore = LevelManager.instance.GetHighScore();
+    int Hiscore;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         
+        Highscore++;
         xvel = rb.linearVelocity.x;
         yvel = rb.linearVelocity.y;
         zvel = rb.linearVelocity.z;
@@ -45,7 +46,11 @@ public class PlayerScript : MonoBehaviour
         {
             zvel = -5;
         }
-
+        if(Highscore > Hiscore)
+        {
+            Hiscore = Highscore;
+            PlayerPrefs.SetInt("Hiscore", Highscore);
+        }
        
         rb.linearVelocity = new Vector3(xvel, yvel, zvel);
         if (LevelManager.instance.GetPlayerHealth() <= 0)
@@ -69,7 +74,7 @@ public class PlayerScript : MonoBehaviour
 
         string text = "Player health: " + Health;
 
-        text += "\nBe careful of enemies" + "\nCurrent score:" + Hiscore + "\nCurrentHigh";
+        text += "\nBe careful of enemies" + "\nCurrent score:" + Highscore + "\nCurrentHighScore:" + Hiscore;
 
         // define debug text area
         GUI.contentColor = Color.white;
